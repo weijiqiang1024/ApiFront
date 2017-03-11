@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+    background-color: #FFF;
+    overflow-y: scroll;
+}
+
+body {
+    font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-size: 13px !important;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.42857143;
+    color: #58666e;
+    background-color: transparent;
+}
+
+* {
+    margin: 0;
+    padding: 0
+}
