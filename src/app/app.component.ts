@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { GlobalState } from './global.state';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  isMenuCollapsed:boolean = false;
+  constructor(private _state:GlobalState){
+
+     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+      this.isMenuCollapsed = isCollapsed;
+    });
+  };
 }

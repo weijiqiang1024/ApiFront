@@ -7,9 +7,14 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './route.module';
 
 import { AppComponent } from './app.component';
+import { GlobalState } from './global.state';
 import { DashboardComponent } from'./dashboard/dashborad.component';
 import { UserComponent } from './sysManage/user.component'
 
+//Application wide providers
+const APP_PROVIDERS = [
+  GlobalState
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +28,8 @@ import { UserComponent } from './sysManage/user.component'
     RouterModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    APP_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

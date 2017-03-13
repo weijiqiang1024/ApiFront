@@ -1,5 +1,10 @@
-<h1>{{title}}</h1>
-<a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-<a routerLink="/heroes" routerLinkActive="active">Heroes</a>
-<a routerLink="/user" routerLinkActive="active">Users</a>
-<router-outlet></router-outlet>
+<main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
+    <div class="additional-bg"></div>
+    <h1>{{title}}</h1>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+    <a routerLink="/user" routerLinkActive="active">Users</a>
+    <router-outlet></router-outlet>
+</main>
+
+<!--<router-outlet></router-outlet>-->
