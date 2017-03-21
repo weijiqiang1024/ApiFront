@@ -1,35 +1,43 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-
-import { AppRoutingModule } from './route.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { GlobalState } from './global.state';
-import { DashboardComponent } from'./dashboard/dashborad.component';
-import { UserComponent } from './sysManage/user.component'
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { TabsModule } from 'ng2-bootstrap/tabs';
+import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
 
-//Application wide providers
-const APP_PROVIDERS = [
-  GlobalState
-];
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
+import { AsideToggleDirective } from './shared/aside.directive';
+import { BreadcrumbsComponent } from './shared/breadcrumb.component';
+
+// Routing Module
+import { AppRoutingModule } from './route.module';
+
+//Layouts
+import { FullLayoutComponent } from './layouts/full-layout.component';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    UserComponent
-  ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ChartsModule
   ],
-  providers: [
-    APP_PROVIDERS],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    FullLayoutComponent,
+    NAV_DROPDOWN_DIRECTIVES,
+    BreadcrumbsComponent,
+    SIDEBAR_TOGGLE_DIRECTIVES,
+    AsideToggleDirective
+  ],
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

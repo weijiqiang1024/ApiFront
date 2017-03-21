@@ -1,19 +1,34 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-// import { AppRoutingComponent } from './name.component';
-import { DashboardComponent } from './dashboard/dashborad.component';
-import { UserComponent } from './sysManage/user.component';
+//
 
-//routing config
-const routes: Routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: DashboardComponent },
-    {path:'user',component:UserComponent}
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+//Layouts
+import { FullLayoutComponent } from './layouts/full-layout.component';
+
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: FullLayoutComponent,
+    data: {
+      title: 'Home'
+    },
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: './dashboard/dashboard.module#DashboardModule'
+      },
+    ]
+  }
 ];
 
-
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
